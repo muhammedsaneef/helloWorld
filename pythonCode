@@ -14,19 +14,22 @@ def shortestPath(source,destination,graph):
             break
         for (eachEdge,weight) in graph[currentNode]:
             #print((eachEdge,weight))
-            if maxHeap[eachEdge]>weight:
+            if maxHeap[eachEdge]>weight+nodeDistance[currentNode]:
                 maxHeap.update({eachEdge:weight+nodeDistance[currentNode]})
             #print(maxHeap)
         currentNode=min(maxHeap,key=maxHeap.get)
         nodeDistance.update({currentNode:maxHeap[currentNode]})
-        #print(currentNode)
+        #print('sda',currentNode)
         del maxHeap[currentNode]
     #print(nodeDistance)
-    if destination in maxHeap:
+    if source==destination:
+        shortPath=0
+    elif destination in maxHeap:
         shortPath=-1
     else:
         shortPath=nodeDistance[destination]
     return shortPath
+    
     
 numberOfNodes,numberOfEdges=map(int,(input().split()))
 #print(numberOfNodes,numberOfEdges)
@@ -48,5 +51,8 @@ queries=int(input())
 for eachQuery in range(queries):
     source,dest=map(int,(input().split()))
     #print(source,dest)
-    shortDistance=shortestPath(source,dest,directedGraph)
+    if source==dest:
+        shortDistance=0
+    else:
+        shortDistance=shortestPath(source,dest,directedGraph)
     print(shortDistance)
