@@ -28,7 +28,6 @@ def shortestPath(source,destination,graph):
         shortPath=nodeDistance[destination]
     return shortPath
     
-    
 numberOfNodes,numberOfEdges=map(int,(input().split()))
 #print(numberOfNodes,numberOfEdges)
 directedGraph=dict()
@@ -48,7 +47,6 @@ for eachEdge in range(numberOfEdges):
 queries=int(input())
 for eachQuery in range(queries):
     source,dest=map(int,(input().split()))
-    #print(source,dest)
     if source==dest:
         shortDistance=0
     else:
