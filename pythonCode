@@ -22,9 +22,7 @@ def shortestPath(source,destination,graph):
         #print('sda',currentNode)
         del maxHeap[currentNode]
     #print(nodeDistance)
-    if source==destination:
-        shortPath=0
-    elif destination in maxHeap:
+    if destination in maxHeap:
         shortPath=-1
     else:
         shortPath=nodeDistance[destination]
