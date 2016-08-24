@@ -1,0 +1,45 @@
+<html>
+<script type="text/javascript">
+function inputGiven()
+{var stringToCheck=document.getElementById('stringInput').value;
+ if(stringToCheck=="")
+   {
+     document.getElementById('para1').innerHTML='Enter a string in textbox';
+   }
+ else{
+var flag=isPalindrome(stringToCheck);
+ if(flag)
+   {
+     document.getElementById('para1').innerHTML='Palindorme';
+   }
+ else
+   {
+     document.getElementById('para1').innerHTML='Not Palindorme';
+   }}
+}
+function isPalindrome(stringArgument)
+{
+  i=0;
+  end=stringArgument.length;
+  len=end;
+  while(i<end/2)
+    {
+      if(stringArgument[i]!=stringArgument[--len])
+        {return false;}
+      i++;
+      
+    }
+  return true;
+}
+function clearPage()
+{
+  document.getElementById('stringInput').value="";
+  document.getElementById('para1').innerHTML="";
+}
+</script>
+<body>
+  <input type="text" id="stringInput" onkeyup="inputGiven()" />
+  <input type="button" value="Clear" onclick="clearPage()" />
+  <p id ="para1"></p>
+</body>
+</html>
