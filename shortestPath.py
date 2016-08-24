@@ -7,7 +7,7 @@ def shortestPath(source,destination,graph):
     currentNode=source
     nodeDistance.update({currentNode:0})
     del maxHeap[currentNode]
-    while maxHeap and currentNode!=destination:
+    while maxHeap:
         if len(graph[currentNode])==0:
             break
         for eachEdge in graph[currentNode]:
@@ -19,15 +19,10 @@ def shortestPath(source,destination,graph):
         currentNode=min(maxHeap,key=maxHeap.get)
         nodeDistance.update({currentNode:maxHeap[currentNode]})
         del maxHeap[currentNode]
-        if currentNode==source:
-            break
         if currentNode==destination:
             break
     if destination in maxHeap:
-        if maxHeap[destination]!=float('inf'):
-            shortPath=maxHeap[destination]
-        else:
-            shortPath=-1
+        shortPath=-1
     else:
         shortPath=nodeDistance[destination]
     return shortPath
